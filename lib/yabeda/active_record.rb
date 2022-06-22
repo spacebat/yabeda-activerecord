@@ -53,8 +53,8 @@ module Yabeda
       ActiveSupport::Notifications.subscribe "sql.active_record" do |*args|
         event = ActiveSupport::Notifications::Event.new(*args)
 
-        pool = event.payload[:connection].pool
-        next if !pool || pool.is_a?(::ActiveRecord::ConnectionAdapters::NullPool)
+        pool = ::ActiveRecord::Base.connection.pool
+        next if !pool
 
         db_config_name = pool.respond_to?(:db_config) ? pool.db_config.name : pool.spec.name
 
