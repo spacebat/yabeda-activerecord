@@ -2,6 +2,8 @@
 
 source "https://rubygems.org"
 
+ruby '2.7.2'
+
 # Specify your gem's dependencies in yabeda-activerecord.gemspec
 gemspec
 
@@ -15,7 +17,7 @@ else
   gem "yabeda", yabeda_version
 end
 
-activerecord_version = ENV.fetch("ACTIVERECORD_VERSION", "~> 7.0")
+activerecord_version = ENV.fetch("ACTIVERECORD_VERSION", "~> 5.1")
 case activerecord_version
 when "HEAD"
   git "https://github.com/rails/rails.git" do
